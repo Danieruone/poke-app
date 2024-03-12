@@ -9,11 +9,28 @@ class PokemonScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pokemonProvider = context.watch<PokemonProvider>();
-    return ListView.builder(
-        itemCount: pokemonProvider.pokemonList.length,
-        itemBuilder: (context, index) {
-          final PokemonEntity pokemon = pokemonProvider.pokemonList[index];
-          return Text(pokemon.name);
-        });
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: ListView.builder(
+          itemCount: pokemonProvider.pokemonList.length,
+          itemBuilder: (context, index) {
+            final PokemonEntity pokemon = pokemonProvider.pokemonList[index];
+            return Card(
+              elevation: 1,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(children: [
+                  Image.network(
+                      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + 1}.png"),
+                  Text(
+                    pokemon.name,
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.w600),
+                  ),
+                ]),
+              ),
+            );
+          }),
+    );
   }
 }

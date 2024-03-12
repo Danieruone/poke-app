@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:poke_app/domain/entities/pokemon_entity.dart';
+
 PokemonsModel pokemonsModelFromJson(String str) =>
     PokemonsModel.fromJson(json.decode(str));
 
@@ -36,6 +38,9 @@ class PokemonsModel {
         "previous": previous,
         "results": List<dynamic>.from(results.map((x) => x.toJson())),
       };
+
+  List<PokemonEntity> toPokemonListEntity() => List<PokemonEntity>.from(results
+      .map((result) => PokemonEntity(name: result.name, url: result.url)));
 }
 
 class Result {

@@ -9,9 +9,9 @@ class PokemonProvider extends ChangeNotifier {
     getPokemonList();
   }
 
-  Future<List<PokemonEntity>> getPokemonList() async {
-    final responseList = GetPokemonList().getList();
-    // TODO return pokemon list entity
-    return [];
+  Future<void> getPokemonList() async {
+    final responseList = await GetPokemonList().getList();
+    pokemonList = responseList;
+    notifyListeners();
   }
 }

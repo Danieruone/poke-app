@@ -8,6 +8,6 @@ class GetPokemonList {
   Future<List<PokemonEntity>> getList() async {
     final response = await _dio.get("https://pokeapi.co/api/v2/pokemon");
     final pokemonsModel = PokemonsModel.fromJson(response.data);
-    return [];
+    return pokemonsModel.toPokemonListEntity();
   }
 }

@@ -15,17 +15,29 @@ class PokemonScreen extends StatelessWidget {
           itemCount: pokemonProvider.pokemonList.length,
           itemBuilder: (context, index) {
             final PokemonEntity pokemon = pokemonProvider.pokemonList[index];
+            String? imagePosition =
+                RegExp(r'/(\d+)/?$').firstMatch(pokemon.url)?.group(1);
             return Card(
-              elevation: 1,
+              color: Colors.lightBlueAccent,
+              elevation: 3,
               child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(children: [
-                  Image.network(
-                      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + 1}.png"),
+                padding: const EdgeInsets.all(5),
+                child: Row(children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 80),
+                    child: SizedBox(
+                      width: 130,
+                      height: 100,
+                      child: Image.network(
+                          "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$imagePosition.png"),
+                    ),
+                  ),
                   Text(
                     pokemon.name,
                     style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.w600),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white),
                   ),
                 ]),
               ),

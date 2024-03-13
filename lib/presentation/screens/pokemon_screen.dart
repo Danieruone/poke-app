@@ -27,6 +27,7 @@ class PokemonScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(right: 80),
                     child: SizedBox(
                       width: 130,
+                      height: 100,
                       child: Image.network(
                           "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$imagePosition.png"),
                     ),

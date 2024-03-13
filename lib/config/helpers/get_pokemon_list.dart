@@ -6,7 +6,7 @@ class GetPokemonList {
   final _dio = Dio();
 
   Future<List<PokemonEntity>> getList() async {
-    final response = await _dio.get("https://pokeapi.co/api/v2/pokemon");
+    final response = await _dio.get("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0");
     final pokemonsModel = PokemonsModel.fromJson(response.data);
     return pokemonsModel.toPokemonListEntity();
   }
